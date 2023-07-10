@@ -3,16 +3,17 @@ package com.epam.mjc.nio;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.io.StringReader;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class FileReader {
 
-    public  Profile getDataFromFile(File file) {
+    public Profile getDataFromFile(File file) {
 
         try (RandomAccessFile aFile = new RandomAccessFile(file, "r");
              FileChannel inChannel = aFile.getChannel()) {
@@ -29,7 +30,7 @@ public class FileReader {
                 }
                 buffer.clear();
             }
-            System.out.println(linesStr);
+
             String[] linesArr = linesStr.split("\n");
 
             List<String> list = Arrays.asList(linesArr);
@@ -61,9 +62,5 @@ public class FileReader {
         return new Profile(name, age, email, phone);
     }
 
-    public static void main(String[] args) {
 
-
-
-    }
 }
